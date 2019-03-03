@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 #define X 0
 #define Y 1
@@ -45,10 +46,23 @@ int jednacina_prave(tTackai a, tTackai p, tTackai q);
 
 int main(){
     
+    
+    
+    clock_t t;
+    
     n=UcitajPoligon(P);
     m=UcitajPoligon(Q);
+    
+    t=clock();
+    
     OdrediPresek(P,Q,n,m);
-    //Nacrtaj();
+    
+    t=clock()-t;
+    double vreme_izvrsavanja = ((double)t)/CLOCKS_PER_SEC;
+    
+    printf("Presek je odredjen u %f sekundi\n",vreme_izvrsavanja);
+    
+    Nacrtaj();
     
  
     exit(EXIT_SUCCESS);
